@@ -9,15 +9,16 @@ args <- commandArgs(trailingOnly = TRUE)
 
 # test if there is at least one argument: if not, return an error
 if (length(args)==0) {
-  stop("At least two argument must be supplied (input file).n", call.=FALSE)
+  stop("(1)epic (2)planet_letter (3)planet_radius (4)planet_radius_err", call.=FALSE)
 } else if (length(args)==1) {
-  stop("At least two argument must be supplied (input file).n", call.=FALSE)
+  stop("(1)epic (2)planet_letter (3)planet_radius (4)planet_radius_err", call.=FALSE)
 }
 
 #parse arguments
 epic    = args[1]
-planrad = as.double(args[2])
-planraderr = as.double(args[3])
+planletter = args[2]
+planrad = as.double(args[3])
+planraderr = as.double(args[4])
 
 print(paste('------',epic,'------'))
 
@@ -42,7 +43,7 @@ print("Prediction: SUCESS")
 
 #A plot showing the joint mass-radius distribution for this individual planet
 #save plot as a png file
-fname1 <- paste(epic,".png",sep="")
+fname1 <- paste(epic,planletter,".png",sep="")
 plotname = paste(outputdir,fname1,sep="")
 png(file=plotname)
 #postscript(file=plotfile,width=10,height=8)
@@ -50,6 +51,6 @@ plot_individMR(postpred$radii,postpred$masses)
 #dev.copy(png, plotname)
 dev.off()
 
-fname2 <- paste("massrad_postpred_",epic,".txt",sep="")
+fname2 <- paste("massrad_postpred_",epic,planletter,".txt",sep="")
 #Write samples from joint mass-radius distribution into text file
 write.table(postpred,file=paste(outputdir,fname2,sep=""))

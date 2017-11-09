@@ -27,10 +27,11 @@ import pandas as pd
 df = pd.read_csv('c10_per_rad_stm.csv')
 
 epics      = df['epic']
+letter     = df['pl']
 radii      = df['r']
 radii_errs = df['r_err']
 
 n=-1 #run all
-for epic,r,r_err in zip(epics[:n],radii[:n],radii_errs[:n]):
+for epic,let,r,r_err in zip(epics[:n],letter[:n],radii[:n],radii_errs[:n]):
     #print(epic)
-    !Rscript run_MR.R $epic $r $r_err
+    !Rscript run_MR.R $epic $let $r $r_err
