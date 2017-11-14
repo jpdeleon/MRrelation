@@ -1,3 +1,6 @@
 .ipynb_checkpoints
 Rplots.pdf
 posterior_samples.savr
+
+#output of MRrelation
+massrad_postpred*.csv
